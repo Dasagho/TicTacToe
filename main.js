@@ -1,16 +1,65 @@
-    let cell1 = document.getElementById("c1");
-    let cell2 = document.getElementById("c2");
-    let cell3 = document.getElementById("c3");
-    let cell4 = document.getElementById("c4");
-    let cell5 = document.getElementById("c5");
-    let cell6 = document.getElementById("c6");
-    let cell7 = document.getElementById("c7");
-    let cell8 = document.getElementById("c8");
-    let cell9 = document.getElementById("c9");
+const cells = document.querySelectorAll(".cell");
+const winCombos = [
+	[0, 1, 2],
+	[3, 4, 5],
+	[6, 7, 8],
+	[0, 3, 6],
+	[1, 4, 7],
+	[2, 5, 8],
+	[0, 4, 8],
+	[2, 4, 6],
+];
 
-    let table = [   [c1, c2, c3],
-                    [c4, c5, c6], 
-                    [c7, c8, c9]
-                ];
-    
-    
+let gameOver = false;
+let turn = 1;
+
+for (let i = 0; i < cells.length; i++) {
+	cells[i].addEventListener("click", clickCell);
+}
+
+function clickCell(event) {
+	if (!gameOver) {
+		animation(event);
+		if (turn % 2 == 0) {
+			event.target.innerText = "O";
+			if (checkWin("O")) {
+				gameOver = true;
+			}
+		} else {
+			event.target.innerText = "X";
+			if (checkWin("X")) {
+				gameOver = true;
+			}
+		}
+		turn++;
+	}
+}
+
+function animation(event) {
+	event.target.style.height = "160px";
+	event.target.style.width = "160px";
+	setTimeout(() => (event.target.style.height = "175px"), 100);
+	setTimeout(() => (event.target.style.width = "175px"), 100);
+}
+
+function checkWin(player) {
+	for (let i = 0; i < winCombos.length; i++) {
+		if (checkWinCondition(i, player)) {
+			setTimeout(() => winner(player), 200);
+			return true;
+		}
+	}
+	return false;
+}
+
+function checkWinCondition(i, player) {
+	return (
+		cells[winCombos[i][0]].innerText == player &&
+		cells[winCombos[i][1]].innerText == player &&
+		cells[winCombos[i][2]].innerText == player
+	);
+}
+
+function winner(player) {
+	alert(`Player ${player} wins`);
+}

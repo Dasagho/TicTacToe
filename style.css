@@ -1,69 +1,46 @@
-
-* {
+body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
 
-.main {
-  background-color: #120099;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100vh;
   width: 100vw;
-  display: grid;
-  place-content: center;
 }
 
 .container {
-  background-color: #00aaff;
-  height: 75vh;
-  width: 70vw;
+  background-color: #34d1bf;
   display: grid;
-  place-content: center;
-  border-radius: 10px;
-}
-
-.table {
-    background-color: #CCFFFF;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.5em;
-    padding: 0.5em;
-    border-radius: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
+  padding: 0.5em;
+  height: 80vh;
+  min-height: 20em;
+  width: 40em;
+  min-width: 20em;
+  border-radius: 4em;
 }
 
 .cell {
-  font-size: 60px;
-    height: 3em;
-    width: 3em;
-    background-color: #CCEEFF;
-    display: grid;
-    place-content: center;
-    padding: 1rem;
-    border: solid 1px black;
-    border-radius: 10px;
-    cursor: pointer;
+  background-color: #3454d1;
+  height: 175px;
+  width: 175px;
+  display: grid;
+  place-items: center;
+  border-radius: 15em;
+  font-size: 48px;
+  user-select: none;
 }
 
 .cell:hover {
-  opacity: 0.5;
+  opacity: 75%;
 }
 
-@media only screen and (max-width: 1000px) {
-  .cell {
-    font-size: 40px;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .cell {
-    font-size: 30px;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  .cell {
-    font-size: 20px;
-  }
-}
-
-
+/*
+  Hacer una media query para que:
+  - a partir de 656 width el container se quede al 100% de width
+  - a partir de 672 height el container y las celdas escale correctamente
+  - a partir de 564 width reducir el tamaño de las celdas  
+*/
