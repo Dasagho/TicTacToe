@@ -9,5 +9,5 @@ A extreamly simple version of the classical game Tic Tac Toe made in Javascript 
 - [ ]  Completely responsive design
 - [ ]  Great color selection :(
 - [x]  JavaScript event handler
-- [ ]  JavaScript DOM selector
-- [ ]  Javascript TimeOut function
+- [x]  JavaScript DOM selector
+- [x]  Javascript TimeOut function
